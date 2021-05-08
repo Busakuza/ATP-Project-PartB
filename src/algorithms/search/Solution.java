@@ -1,11 +1,12 @@
 package algorithms.search;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 /** Solution Class - represents a valid path from the start position
  * in the maze towards the goal
  * @solutionPath - an arrayList containts AState object which represent the path towards the goal in the maze
  * */
-public class Solution {
+public class Solution implements Serializable {
     private ArrayList<AState> solutionPath;
 /**
  * constructor
