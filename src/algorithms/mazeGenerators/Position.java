@@ -1,12 +1,13 @@
 package algorithms.mazeGenerators;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 /**
  * The class Position responsible for creating Position,
  * the position represents a cell in maze ,it has a p_row (number of the row) and p_col (number of the column).
  * */
-public class Position {
+public class Position implements Serializable {
     //the row of position
     private int p_row;
     //the column of position
