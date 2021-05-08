@@ -3,7 +3,9 @@ package Client;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.Socket;
-
+/**
+ * Client class we learned in class.
+ * */
 public class Client {
     private InetAddress serverIP;
     private int serverPort;
@@ -14,7 +16,9 @@ public class Client {
         this.serverPort = serverPort;
         this.strategy = strategy;
     }
-
+    /**
+     * The start method from class but named "communicateWithServer"
+     * */
     public void communicateWithServer(){
         try(Socket serverSocket = new Socket(serverIP, serverPort)){
             System.out.println("connected to server - IP = " + serverIP + ", Port = " + serverPort);
