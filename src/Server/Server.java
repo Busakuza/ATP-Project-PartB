@@ -1,15 +1,15 @@
 package Server;
-import algorithms.mazeGenerators.IMazeGenerator;
-import algorithms.search.ISearchingAlgorithm;
+
 
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.net.SocketTimeoutException;
-import java.util.HashMap;
+
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-
+/**
+ * The same Server class we learned at class.
+ * */
 public class Server {
     private int port;
     private int listeningIntervalMS;
@@ -23,8 +23,11 @@ public class Server {
         this.strategy = strategy;
         this.threadPool = Executors.newFixedThreadPool(Configurations.getInstance().getNumOfThreads());
     }
-
+    /**
+     * Each time we start a server a new thread is opened so we could use multiple servers.
+     * */
     public void start(){
+
         new Thread(()->{
             try {
                 ServerSocket serverSocket = new ServerSocket(port);
@@ -40,7 +43,7 @@ public class Server {
                         threadPool.submit(() -> {
                             handleClient(clientSocket);
                         });
-                    } catch (SocketTimeoutException e){
+                    } catch (Exception e){
                         e.printStackTrace();
                     }
                 }

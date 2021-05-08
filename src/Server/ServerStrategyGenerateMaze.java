@@ -1,11 +1,16 @@
 package Server;
 
+import IO.MyCompressorOutputStream;
 import IO.SimpleCompressorOutputStream;
 import algorithms.mazeGenerators.*;
 
 import java.io.*;
 import java.util.HashMap;
-
+/**
+ * Strategy Design Pattern implementation.
+ * Gets from a client the size of the requested maze, the server generates the maze via 1 of the
+ * maze Generating algorithms compresses the maze and sends it back to the client.
+ * */
 public class ServerStrategyGenerateMaze implements IServerStrategy{
     private HashMap<String, IMazeGenerator> mazeGens;
     public ServerStrategyGenerateMaze(){
@@ -21,7 +26,7 @@ public class ServerStrategyGenerateMaze implements IServerStrategy{
             String tmpFile= "tmp.tmp";
             ObjectInputStream fromClient = new ObjectInputStream(inFromClient);
             ObjectOutputStream toClient = new ObjectOutputStream(outToClient);
-            OutputStream toBeCompressedMaze = new SimpleCompressorOutputStream(new FileOutputStream(tmpFile));
+            OutputStream toBeCompressedMaze = new MyCompressorOutputStream(new FileOutputStream(tmpFile));
             InputStream in = new FileInputStream(tmpFile);
 
             int[] dim = (int[])fromClient.readObject();
