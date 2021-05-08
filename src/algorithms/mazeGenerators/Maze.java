@@ -1,11 +1,14 @@
 package algorithms.mazeGenerators;
 /**The class Maze responsible for creating two-dimensional maze.
  */
+import java.io.NotSerializableException;
+import java.io.Serializable;
+import java.util.Arrays;
 
-
-public class Maze {
+public class Maze implements Serializable {
     /**number of columns in maze */
     private int col;
+
     /**number of rows in maze */
     private int row;
     /** The start position in maze */
@@ -118,7 +121,6 @@ public class Maze {
         return this.maze[row][col];
 
     }
-
     /**function setCol: update  column of maze accordingly.
      * @param col ,Integer , number of column from maze
      */
@@ -159,6 +161,7 @@ public class Maze {
         }
         path.append("{");
     }
+
     /**function SetPosition:update the value from maze in cell [row][col] to be value.
      * @param row ,Integer ,number of row from maze
      * @param col ,Integer , number of column from maze
@@ -168,7 +171,6 @@ public class Maze {
     {
         this.maze[row][col]=value;
     }
-
     /**function cell_exist:return true if cell [row][col] exist in maze else false.
      * @param row ,Integer ,number of row from maze
      * @param col ,Integer , number of column from maze
@@ -181,6 +183,7 @@ public class Maze {
             return false;
         return col >= 0 && col <= maze[0].length - 1;
     }
+
     /**function sum_neighbors:return the number of cells located next to cell[row][col] in maze.
      * @param row ,Integer ,number of row from maze
      * @param col ,Integer , number of column from maze
@@ -300,6 +303,18 @@ public class Maze {
         return mazeByteArray;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Maze maze1 = (Maze) o;
+        return Arrays.equals(maze, maze1.maze);
+    }
+
+    @Override
+    public int hashCode() {
+        return Arrays.hashCode(toByteArray());
+    }
 
 
 
