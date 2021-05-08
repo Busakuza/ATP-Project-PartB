@@ -2,7 +2,9 @@ package Server;
 
 import java.io.*;
 import java.nio.channels.Channels;
-
+/**
+ * The String Reverser strategy from class
+ * */
 public class ServerStrategyStringReverser implements IServerStrategy{
     @Override
     public void applyStrategy(InputStream inFromClient, OutputStream outToClient) {
