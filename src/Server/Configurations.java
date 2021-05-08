@@ -58,6 +58,8 @@ public class Configurations {
         try(InputStream input = new FileInputStream("C://Users//Kuza//Desktop//SISE//ATP-Project-PartB//resources//config.properties"))
         {
             Properties prop = new Properties();
+            prop.load(input);
+            input.close();
             prop.setProperty("threadPoolSize",numOfThreads);
             prop.store(new FileOutputStream("C://Users//Kuza//Desktop//SISE//ATP-Project-PartB//resources//config.properties"),null);
         }
@@ -72,6 +74,8 @@ public class Configurations {
         try(InputStream input = new FileInputStream("C://Users//Kuza//Desktop//SISE//ATP-Project-PartB//resources//config.properties"))
         {
             Properties prop = new Properties();
+            prop.load(input);
+            input.close();
             if(mazeSolve.equals("BestFirstSearch") || mazeSolve.equals("DepthFirstSearch") || mazeSolve.equals("BreadthFirstSearch"))
                 prop.setProperty("mazeSearchingAlgorithm",mazeSolve);
             else
@@ -89,11 +93,13 @@ public class Configurations {
         try(InputStream input = new FileInputStream("C://Users//Kuza//Desktop//SISE//ATP-Project-PartB//resources//config.properties"))
         {
             Properties prop = new Properties();
+            prop.load(input);
+            input.close();
             if(mazeGen.equals("EmptyMazeGenerator") || mazeGen.equals("SimpleMazeGenerator") ||
                     mazeGen.equals("MyMazeGenerator"))
                 prop.setProperty("mazeGeneratingAlgorithm",mazeGen);
             else
-                prop.setProperty("mazeSearchingAlgorithm", "MyMazeGenerator");
+                prop.setProperty("mazeGeneratingAlgorithm", "MyMazeGenerator");
             prop.store(new FileOutputStream("C://Users//Kuza//Desktop//SISE//ATP-Project-PartB//resources//config.properties"),null);
         }
 
