@@ -1,10 +1,13 @@
 package algorithms.search;
+
+import java.io.Serializable;
+
 /** abstract class AState - represents the picture of our "world" or the problem.
  * in the maze problem AState will represent the cell of the maze, the start state, goal state.
  * @cost - an integer which represents the cost of arrival to a certain state
  * @camefrom - AState which represents the "father" state from which we got to the current state.
  * */
-public abstract class AState {
+public abstract class AState implements Serializable {
 
   private int cost;
   private AState cameFrom;
