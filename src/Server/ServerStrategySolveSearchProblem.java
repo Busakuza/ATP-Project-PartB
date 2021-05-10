@@ -37,9 +37,9 @@ public class ServerStrategySolveSearchProblem implements IServerStrategy {
             File[] solutionFiles = getSolutionFiles(tempDirectoryPath); //all Files with .solution
             Maze maze = (Maze) fromClient.readObject();//get the maze from the client
             //creating the name of the file
-            String mazeID = tempDirectoryPath.toString() + "/" + maze.hashCode() + ".solution";
+            String mazeID = tempDirectoryPath.toString() + "/" + maze.hashCode()+solver.getName()+ ".solution";
             //get the relevant solution file
-            File mazeSolutionFile = getFile(solutionFiles, maze);
+            File mazeSolutionFile = getFile(solutionFiles,solver ,maze);
             //get the Solution to the maze problem
             Solution solution = getMazeSolution(mazeSolutionFile, mazeID, solver, maze);
             toClient.writeObject(solution);// write to the client
@@ -67,10 +67,10 @@ public class ServerStrategySolveSearchProblem implements IServerStrategy {
      * @param maze - The current Maze
      * @param solutionFiles - All the solutions to different maze problems. an Array of File objects.
      */
-    private File getFile(File[] solutionFiles, Maze maze) {
+    private File getFile(File[] solutionFiles, ISearchingAlgorithm solver,Maze maze) {
         File mazeSolutionFile = null;
         for (File f : solutionFiles) {// should be only 1 file in the list of matching files
-            if (f.getName().equals(maze.hashCode() + ".solution")) {
+            if (f.getName().equals(maze.hashCode() +solver.getName()+ ".solution")) {
                 mazeSolutionFile = f;
                 break;
             }
