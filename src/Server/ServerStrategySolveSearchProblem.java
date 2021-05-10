@@ -70,7 +70,7 @@ public class ServerStrategySolveSearchProblem implements IServerStrategy {
     private File getFile(File[] solutionFiles, ISearchingAlgorithm solver,Maze maze) {
         File mazeSolutionFile = null;
         for (File f : solutionFiles) {// should be only 1 file in the list of matching files
-            if (f.getName().equals(maze.hashCode() +solver.getName()+ ".solution")) {
+            if (f.getName().equals(maze.hashCode()+solver.getName()+ ".solution")) {
                 mazeSolutionFile = f;
                 break;
             }
