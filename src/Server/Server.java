@@ -32,12 +32,9 @@ public class Server {
             try {
                 ServerSocket serverSocket = new ServerSocket(port);
                 serverSocket.setSoTimeout(listeningIntervalMS);
-                System.out.println("Starting server at port = " + port);
-
                 while (!stop) {
                     try {
                         Socket clientSocket = serverSocket.accept();
-                        System.out.println("Client accepted: " + clientSocket.toString());
 
                         // Insert the new task into the thread pool:
                         threadPool.submit(() -> {
@@ -60,7 +57,6 @@ public class Server {
     private void handleClient(Socket clientSocket) {
         try {
             strategy.applyStrategy(clientSocket.getInputStream(), clientSocket.getOutputStream());
-            System.out.println("Done handling client: " + clientSocket.toString());
             clientSocket.close();
         } catch (IOException e){
             e.printStackTrace();
