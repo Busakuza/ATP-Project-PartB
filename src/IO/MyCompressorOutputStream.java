@@ -35,7 +35,12 @@ public class MyCompressorOutputStream extends OutputStream {
     public void write(int b) throws IOException {
 
     }
-
+    /**
+     * function write: get inputs: byte arrray- byteMaze that An array that represents
+     * a non-shrinking maze and shrinks it into an array of bits that holds a mapped grouped
+     * by a method of binary representation, each sequence of 8 bytes in the maze represented
+     * a binary number and we will keep it as a number.
+     * */
     public void write(byte[] byteMaze) throws IOException {
         int count_index = 0, i = 0;
         int rest = (byteMaze.length - 16 - 32) % 8;

@@ -15,6 +15,10 @@ public class MyDecompressorInputStream extends InputStream {
     public int read() throws IOException {
         return 0;
     }
+    /**function read: get input: Array of byte- byteMaze represents a compressing maze.
+    The function will expand the maze by performing an operation opposite to the contraction
+     operation, it will take any value in the array from the representation of the maze and convert
+      it to a binary number represented by 8 bytes.*/
     public int read(byte[] byteMaze) throws IOException {
         int i=0; int count_index=0;
         /*a shfiut test*/
