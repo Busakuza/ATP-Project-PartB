@@ -32,6 +32,7 @@ public class Server {
             try {
                 ServerSocket serverSocket = new ServerSocket(port);
                 serverSocket.setSoTimeout(listeningIntervalMS);
+
                 while (!stop) {
                     try {
                         Socket clientSocket = serverSocket.accept();
